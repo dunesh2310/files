@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Single Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: skyblue;
+      background: black;
+      overflow-x: hidden;
+    }
+
+    /* Star background layers */
+    .stars, .stars2, .stars3 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      z-index: -1;
+    }
+
+    .stars {
+      animation: moveStars 60s linear infinite;
+    }
+    .stars2 {
+      animation: moveStars 120s linear infinite;
+      opacity: 0.5;
+    }
+    .stars3 {
+      animation: moveStars 180s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    header {
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: whitesmoke;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 10px 0;
+    }
+    nav a button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: skyblue;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    section {
+      min-height: 100vh; /* full screen height */
+      padding-top: 120px; /* space for fixed header */
+    }
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 50px;
+    }
+    .flip-card {
+      background-color: transparent;
+      width: 200px;
+      height: 200px;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .flip-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .flip-card-back {
+      background-color: black;
+      color:whitesmoke;
+      transform: rotateY(180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      text-align: center;
+    }
+    footer {
+      background-color: black;
+      padding: 20px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Star layers -->
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+
+  <header>
+    <nav>
+      <h1>WELCOME TO MY PORTFOLIO</h1>
+      <a href="#about-me"><button>ABOUT ME</button></a>
+      <a href="#skills"><button>SKILLS</button></a>
+      <a href="#projects"><button>PROJECTS</button></a>
+      <a href="#contact-me"><button>CONTACT</button></a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section id="about-me">
+    <h2 style="color:whitesmoke;">DUNESH KUMAR</h2>
+    <div class="card-container">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="baa.png" alt="sunny">
+          </div>
+          <div class="flip-card-back">
+            <p><strong>ITS ME</strong><br>
+            My name is DUNESH<br>
+            I am 19 years old<br>
+            Studying B.Tech in ANU University<br>
+            I am a small web developer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>MY SKILLS</h2>
+    <ol>
+      <li>Python basics</li>
+      <li>HTML basics</li>
+      <li>CSS basics</li>
+      <li>JavaScript basics</li>
+    </ol>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>MY PROJECTS</h2>
+    <table style="margin:auto;width:80%;border-collapse:collapse;color:white">
+      <thead>
+        <tr style="color:skyblue; border-bottom:2px solid white;">
+          <th style="padding:10px;border:1px solid white;">PROJECT NAME</th>
+          <th style="padding:10px;border:1px solid white;">DESCRIPTION</th>
+          <th style="padding:10px;border:1px solid white;">LANGUAGE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:10px;border:1px solid white;">My Portfolio</td>
+          <td style="padding:10px;border:1px solid white;">Portfolio tells about my details, projects, skills, and contact information</td>
+          <td style="padding:10px;border:1px solid white;">HTML, CSS, JavaScript</td>
+        </tr>
+        <tr>
+          <td style="padding:10px;border:1px solid white;">Flip Card Effect</td>
+          <td style="padding:10px;border:1px solid white;">Flip card effect means if we hover on the image it will show information</td>
+          <td style="padding:10px;border:1px solid white;">HTML, CSS</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact-me">
+    <h2>CONTACT ME</h2>
+    <p>Feel free to get in touch with me using the form below:</p>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+
+      <b>Choose your gender:</b><br>
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="female"><br><br>
+
+      <b>Select your interest:</b><br>
+      <label for="coding">Coding</label>
+      <input type="radio" id="coding" name="interest" value="coding">
+      <label for="reading">Reading</label>
+      <input type="radio" id="reading" name="interest" value="reading"><br><br>
+
+      <button style="color:blue;" type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 My Portfolio</p>
+  </footer>
+</body>
+</html>
